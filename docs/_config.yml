@@ -21,7 +21,7 @@
 title: Preventivo
 email: lasillera74@gmail.com
 description: Descripcion del Modulo de Mantenimiento Preventivo en Odoo.
-baseurl: "/remoto_mantenprev" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://isabelmartiromeu.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 
