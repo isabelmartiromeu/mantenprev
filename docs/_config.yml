@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Mantenimiento Preventivo
+title: Preventivo
 email: lasillera74@gmail.com
-description: Descripción del Módulo de Mantenimiento Preventivo en Odoo.
-baseurl: "/mantenprev" # the subpath of your site, e.g. /blog
+description: Descripcion del Modulo de Mantenimiento Preventivo en Odoo.
+baseurl: "/remoto_mantenprev" # the subpath of your site, e.g. /blog
 url: "https://isabelmartiromeu.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 
