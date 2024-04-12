@@ -1,2 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mantenprev_mantenprev,mantenprev.mantenprev,model_mantenprev_mantenprev,base.group_user,1,1,1,1
+access_mantenprev_informe,mantenprev.informe,model_mantenprev_informe,base.group_user,1,1,1,1
+access_mantenprev_equipo_trabajo,mantenprev.equipo_trabajo,model_mantenprev_equipo_trabajo,base.group_user,1,1,1,1
+access_mantenprev_oca,mantenprev.oca,model_mantenprev_oca,base.group_user,1,1,1,1
+access_mantenprev_cliente,mantenprev.cliente,model_mantenprev_cliente,base.group_user,1,1,1,1
+access_mantenprev_emplazamiento,mantenprev.emplazamiento,model_mantenprev_emplazamiento,base.group_user,1,1,1,1
+access_mantenprev_responsable,mantenprev.responsable,model_mantenprev_responsable,base.group_user,1,1,1,1
+access_mantenprev_certificado,mantenprev.certificado,model_mantenprev_certificado,base.group_user,1,1,1,1

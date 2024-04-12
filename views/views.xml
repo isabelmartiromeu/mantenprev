@@ -1,62 +1,85 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="mantenprev.list">
-      <field name="name">mantenprev list</field>
-      <field name="model">mantenprev.mantenprev</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
--->
 
     <!-- actions opening views on models -->
-
+ <!-- 
     <record model="ir.actions.act_window" id="mantenprev.action_window">
       <field name="name">Listado mantenimiento preventivo</field>
       <field name="res_model">mantenprev.mantenprev</field>
       <field name="view_mode">tree,form</field>
     </record>
+    -->
 
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="mantenprev.action_server">
-      <field name="name">mantenprev server</field>
-      <field name="model_id" ref="model_mantenprev_mantenprev"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
+    <record model="ir.actions.act_window" id="mantenprev.action_window_informe">
+      <field name="name">Ventana Informe</field>
+      <field name="res_model">mantenprev.informe</field>
+      <field name="view_mode">tree,form</field>
     </record>
--->
+
+    <record model="ir.actions.act_window" id="mantenprev.action_window_equipo_trabajo">
+      <field name="name">Ventana Equipo Trabjao</field>
+      <field name="res_model">mantenprev.equipo_trabajo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mantenprev.action_window_oca">
+      <field name="name">Ventana OCA</field>
+      <field name="res_model">mantenprev.oca</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mantenprev.action_window_cliente">
+      <field name="name">Ventana Cliente</field>
+      <field name="res_model">mantenprev.cliente</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mantenprev.action_window_emplazamiento">
+      <field name="name">Ventana Emplazamiento</field>
+      <field name="res_model">mantenprev.emplazamiento</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mantenprev.action_window_responsable">
+      <field name="name">Ventana Responsable</field>
+      <field name="res_model">mantenprev.responsable</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mantenprev.action_window_certificado">
+      <field name="name">Ventana Certificado OCA</field>
+      <field name="res_model">mantenprev.certificado</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- Top menu item -->
 
     <menuitem name="Preventivo" id="mantenprev.menu_root"/>
 
-    <!-- menu categories -->
+    <!-- menu  -->
 
     <menuitem name="Listado preventivo" id="mantenprev.menu_1" parent="mantenprev.menu_root"/>
-<!--
-    <menuitem name="Menu 2" id="mantenprev.menu_2" parent="mantenprev.menu_root"/>
--->
-    <!-- actions -->
 
-    <menuitem name="List" id="mantenprev.menu_1_list" parent="mantenprev.menu_1"
-              action="mantenprev.action_window"/>
-<!--
-    <menuitem name="Server to list" id="mantenprev" parent="mantenprev.menu_2"
-              action="mantenprev.action_server"/>
--->
+    <!-- actions -->
+    <menuitem name="Informes" id="mantenprev.informe_list" parent="mantenprev.menu_1"
+              action="mantenprev.action_window_informe"/>
+              
+    <menuitem name="Equipo trabajo" id="mantenprev.equipo_trabajo_list" parent="mantenprev.menu_1"
+              action="mantenprev.action_window_equipo_trabajo"/>
+
+    <menuitem name="OCA" id="mantenprev.oca_list" parent="mantenprev.menu_1"
+              action="mantenprev.action_window_oca"/>
+
+    <menuitem name="Cliente" id="mantenprev.cliente_list" parent="mantenprev.menu_1"
+              action="mantenprev.action_window_cliente"/>
+
+    <menuitem name="Emplazamiento" id="mantenprev.emplazamiento_list" parent="mantenprev.menu_1"
+              action="mantenprev.action_window_emplazamiento"/>  
+              
+    <menuitem name="Responsable" id="mantenprev.responsable_list" parent="mantenprev.menu_1"
+              action="mantenprev.action_window_responsable"/>  
+
+    <menuitem name="Certificado OCA" id="mantenprev.certificado_list" parent="mantenprev.menu_1"
+              action="mantenprev.action_window_certificado"/>  
   </data>
 </odoo>
