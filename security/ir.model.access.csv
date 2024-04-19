@@ -6,3 +6,4 @@ access_mantenprev_cliente,mantenprev.cliente,model_mantenprev_cliente,base.group
 access_mantenprev_emplazamiento,mantenprev.emplazamiento,model_mantenprev_emplazamiento,base.group_user,1,1,1,1
 access_mantenprev_responsable,mantenprev.responsable,model_mantenprev_responsable,base.group_user,1,1,1,1
 access_mantenprev_certificado,mantenprev.certificado,model_mantenprev_certificado,base.group_user,1,1,1,1
+access_mantenprev_revisiones,mantenprev.revisiones,model_mantenprev_revisiones,base.group_user,1,1,1,1

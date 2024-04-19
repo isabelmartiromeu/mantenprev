@@ -11,7 +11,12 @@ class cliente(models.Model):
      name = fields.Char(required = True, string = "Nombre")
      CIF_cli = fields.Char(size = 9, required = True, string = "CIF")
      IBAN_cli = fields.Char(size = 24, required = True, string = "IBAN")
+     
+     # Un cliente tiene muchas revisiones revisiones [N] : [1] cliente
+     revisiones_id = fields.One2many('mantenprev.revisiones','cliente_id', string = "Revisiones")
 
+     # Un cliente tiene muchos emplazamientos emplazamiento [N] : [1] cliente
+     emplazamientos_id = fields.One2many('mantenprev.emplazamiento','cliente_id', string = "Emplazamientos")
 
 
      _sql_constraints = [

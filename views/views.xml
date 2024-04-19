@@ -10,6 +10,12 @@
     </record>
     -->
 
+    <record model="ir.actions.act_window" id="mantenprev.action_window_revisiones">
+      <field name="name">Listado de revisiones</field>
+      <field name="res_model">mantenprev.revisiones</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
     <record model="ir.actions.act_window" id="mantenprev.action_window_informe">
       <field name="name">Ventana Informe</field>
       <field name="res_model">mantenprev.informe</field>
@@ -61,6 +67,9 @@
     <menuitem name="Listado preventivo" id="mantenprev.menu_1" parent="mantenprev.menu_root"/>
 
     <!-- actions -->
+    <menuitem name="Listado revisiones" id="mantenprev.revisiones_list" parent="mantenprev.menu_1"
+              action="mantenprev.action_window_revisiones"/>
+
     <menuitem name="Informes" id="mantenprev.informe_list" parent="mantenprev.menu_1"
               action="mantenprev.action_window_informe"/>
               

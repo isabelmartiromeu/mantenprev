@@ -7,3 +7,4 @@ from . import cliente
 from . import emplazamiento
 from . import responsable
 from . import certificado
+from . import revisiones
