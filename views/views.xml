@@ -58,6 +58,12 @@
       <field name="view_mode">tree,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="mantenprev.action_window_mantenimiento">
+      <field name="name">Mantenimiento</field>
+      <field name="res_model">mantenprev.mantenimiento</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
     <!-- Top menu item -->
 
     <menuitem name="Preventivo" id="mantenprev.menu_root"/>
@@ -90,5 +96,8 @@
 
     <menuitem name="Certificado OCA" id="mantenprev.certificado_list" parent="mantenprev.menu_1"
               action="mantenprev.action_window_certificado"/>  
+
+    <menuitem name="Mantenimiento" id="mantenprev.mantenimiento_list" parent="mantenprev.menu_1"
+              action="mantenprev.action_window_mantenimiento"/>  
   </data>
 </odoo>

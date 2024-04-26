@@ -18,6 +18,8 @@ class cliente(models.Model):
      # Un cliente tiene muchos emplazamientos emplazamiento [N] : [1] cliente
      emplazamientos_id = fields.One2many('mantenprev.emplazamiento','cliente_id', string = "Emplazamientos")
 
+     # Un cliente tiene muchos certificados. cliente [1] : certificados [n]
+     certificado_id = fields.One2many('mantenprev.certificado','cliente_id', string = "Certificados")
 
      _sql_constraints = [
           ('code_uniq_cliente', 'unique(code)', 'El código debe ser único'),
