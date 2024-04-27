@@ -21,6 +21,10 @@ class cliente(models.Model):
      # Un cliente tiene muchos certificados. cliente [1] : certificados [n]
      certificado_id = fields.One2many('mantenprev.certificado','cliente_id', string = "Certificados")
 
+     # Un cliente tiene muchos responsables, que pertenecen a un solo cliente
+     # responsalbe [N] : [1] cliente
+     responsable_id = fields.One2many('mantenprev.responsable','cliente_id', string = "Responsables")
+
      _sql_constraints = [
           ('code_uniq_cliente', 'unique(code)', 'El código debe ser único'),
           ('name_uniq_cliente', 'unique(name)', 'El nombre debe ser único'),

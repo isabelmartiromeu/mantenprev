@@ -19,6 +19,21 @@ class emplazamiento(models.Model):
 
      # Un emplazamiento tiene muchas revisiones revisiones [N] : [1] emplazamiento
      revisiones_id = fields.One2many('mantenprev.revisiones','emplazamiento_id', string = "Revisiones")
+
+
+     # Un mantenimiento concreto es de un emplazamiento
+     # pero un emplazamiento puede tener muchos mantenimientos
+     # mantenimiento [N] : emplazamiento [1]
+     mantenimiento_id = fields.One2many('mantenprev.mantenimiento','emplazamiento_id', string = "Mantenimientos")
+
+     # Un emplezamiento tiene un responsable del cliente, pero un responsable
+     # puede llevar varios emplazamientos.
+     # responsable [1] : emplazamiento [N]
+     responsable_id = fields.Many2one('mantenprev.responsable')
+     responsable_name = fields.Char(related = 'responsable_id.name')
+
+     responsable_id = fields.Many2one('mantenprev.responsable')
+     responsable_name = fields.Char(required = True, related = 'responsable_id.name', string = "Responsable")
      
      _sql_constraints = [
           ('code_uniq_emplazamiento', 'unique(code)', 'El código debe ser único'),

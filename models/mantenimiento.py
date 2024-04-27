@@ -13,7 +13,7 @@ class mantenimiento(models.Model):
      # pero un equipo de trabajo realiza muchos trabajos de mantenimiento
      # manteniento [n] : equipo_trabajo [1]
      equipo_trabajo_id = fields.Many2one('mantenprev.equipo_trabajo')
-     equipo_trabajo_code_equipo = fields.Char(related = 'equipo_trabajo_id.code')
+     equipo_trabajo_code = fields.Char(related = 'equipo_trabajo_id.code')
 
      # Un  mantenimiento concreto es certificado por una empresa OCA,
      # pero una empresa OCA certifica muchos mantenimientos
@@ -31,6 +31,13 @@ class mantenimiento(models.Model):
      
      # Parte de mantenimiento [1] : informe [n]
      mi_informe_id = fields.One2many('mantenprev.informe','mi_mantenimiento_id')   
+
+     # Un mantenimiento concreto es de un emplazamiento
+     # pero un emplazamiento puede tener muchos mantenimientos
+     # mantenimiento [n] : emplazamiento [1]
+     emplazamiento_id = fields.Many2one('mantenprev.emplazamiento')
+     emplazamiento = fields.Char(required = True, related = 'emplazamiento_id.name', string = "Emplazamiento")
+
      # Un mantenimiento concreto produce una orden de facturación
      # una orden de facturación concreta es producida por un mantenimiento concreto
      # Esto es una comunicación con el departamento de facturación, no una vista.
