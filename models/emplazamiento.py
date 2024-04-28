@@ -29,8 +29,6 @@ class emplazamiento(models.Model):
      # Un emplezamiento tiene un responsable del cliente, pero un responsable
      # puede llevar varios emplazamientos.
      # responsable [1] : emplazamiento [N]
-     responsable_id = fields.Many2one('mantenprev.responsable')
-     responsable_name = fields.Char(related = 'responsable_id.name')
 
      responsable_id = fields.Many2one('mantenprev.responsable')
      responsable_name = fields.Char(required = True, related = 'responsable_id.name', string = "Responsable")

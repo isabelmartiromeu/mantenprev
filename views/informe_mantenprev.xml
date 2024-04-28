@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="plantilla_informe_mantenimiento" model="ir.ui.view">
+        <field name="name">informe.form.inherit</field>
+        <field name="model">informe</field>
+        <field name="inherit_id" ref="informe.view_informe_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                <button
+                string="Imprimir Informe"
+                type="object"
+                name="imprimir_informe"
+                class="oe_highlight"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

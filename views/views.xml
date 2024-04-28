@@ -2,19 +2,31 @@
   <data>
 
     <!-- actions opening views on models -->
- <!-- 
-    <record model="ir.actions.act_window" id="mantenprev.action_window">
-      <field name="name">Listado mantenimiento preventivo</field>
-      <field name="res_model">mantenprev.mantenprev</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
 
     <record model="ir.actions.act_window" id="mantenprev.action_window_revisiones">
       <field name="name">Listado de revisiones</field>
       <field name="res_model">mantenprev.revisiones</field>
       <field name="view_mode">tree,form</field>
     </record>
+
+
+    <!-- <record model="ir.ui.view" id="mantenprev.action_window_revisiones">
+      <field name="name">Listado de revisiones</field>
+      <field name="model">mantenprev.revisiones</field>
+      <field name="view_mode" type="xml">
+          <tree>
+
+            <field name="code"/>
+            <field name="ciudad"/>
+            <field name="fecha_revision"/>
+            <field name="estado"/>
+            <field name="emplazamiento_id"/>
+            <field name="responsable_id"/>
+            <field name="responsable_email"/>
+
+          </tree>
+      </field>
+    </record> -->
 
     <record model="ir.actions.act_window" id="mantenprev.action_window_informe">
       <field name="name">Ventana Informe</field>

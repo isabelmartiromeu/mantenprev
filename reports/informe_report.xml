@@ -1,0 +1,43 @@
+<odoo>
+  <!-- name nombre de la accion -->
+  <record id="informe_pdf_report" model="ir.actions.report">
+    <field name="name">Informe de Mantenimiento</field>
+    <field name="model">mantenprev.informe</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">mantenprev.report_informe</field>
+    <field name="binding_model_id" ref="model_mantenprev_informe"/>
+    <field name="binding_type">report</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="print_report_name">'Ficha informe - %s' % (object.code)</field>
+  </record>
+ 
+    
+  <template id="mantenprev.report_informe">
+    <t t-call="web.html_container">
+      <!-- por si se mandará a imprimir varios informes -->
+      <t t-foreach="docs" t-as="record">
+         <t t-call="web.external_layout">
+          <div class="page">
+            <h2>Informe</h2>
+            <p><span>Código:</span><t t-esc="record.code"/></p>
+            <p><span>Resultado:</span><t t-esc="record.result"/></p>
+            <p><span>Observaciones:</span><t t-esc="record.observ"/></p>
+            <p><span>Solicitud de corrección:</span><t t-esc="record.solic_correc"/></p>
+            <p><span>Código de mantenimiento:</span><t t-esc="record.mantenimiento_id"/></p>
+
+
+             <h1><t t-esc="record.display_name"/></h1>
+            <dl>
+            <t t-foreach="record._fields" t-as="field">
+              <dt><t t-esc="field"/></dt>
+              <dd><t t-esc="record[field]"/></dd>
+            </t>
+          </dl>
+
+          </div>
+         </t>
+      </t>
+    </t>
+  </template>
+
+</odoo>

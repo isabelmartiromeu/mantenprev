@@ -1,17 +1,22 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-
+from odoo.exceptions import ValidationError
+from datetime import datetime, date
+import base64
+import logging
+	
 
 class informe(models.Model):
      _name = 'mantenprev.informe'
      _description = 'mantenprev.informe'
+     #_inherit = 'mantenprev.informe'
 
      code = fields.Char(size = 6, required = True, string = "Código")
-     result = fields.Selection([('posit', 'Positivo'), ('negat', 'Negativo'), ('pend', 'Pendiente')], required = True, default = 'true', string = 'Resultado')
+     result = fields.Selection([('positivo', 'Positivo'), ('negativo', 'Negativo'), ('pendiente', 'Pendiente')], required = True, default = 'positivo', string = 'Resultado')
 
      observ = fields.Text(required = True, string = "Observaciones")
-     solic_correc = fields.Selection([('false', 'No'), ('true', 'Sí')], required = True, default = 'false', string = 'Solicita correción')
+     solic_correc = fields.Selection([('no', 'No'), ('si', 'Sí')], required = True, default = 'false', string = 'Solicita correción')
 
      # Un mantenimiento concreto tiene un informe asociado
      # un informe en concreto solo es de un mantenimiento concreto
@@ -27,4 +32,7 @@ class informe(models.Model):
      _sql_constraints = [
           ('code_uniq_informe', 'unique(code)', 'El código debe ser único'),
      ]
+
+     def imprimir_informe(self):
+	     return self.env.ref('mantenprev.informe_pdf_report').report_action(self)
 

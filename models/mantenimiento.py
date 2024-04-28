@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+from odoo.addons.base.models.ir_mail_server import MailDeliveryException
 
 
 class mantenimiento(models.Model):
@@ -12,14 +14,14 @@ class mantenimiento(models.Model):
      # Un mantenimiento concreto es realizado por un equipo de trabajo
      # pero un equipo de trabajo realiza muchos trabajos de mantenimiento
      # manteniento [n] : equipo_trabajo [1]
-     equipo_trabajo_id = fields.Many2one('mantenprev.equipo_trabajo')
-     equipo_trabajo_code = fields.Char(related = 'equipo_trabajo_id.code')
+     equipo_trabajo_id = fields.Many2one('mantenprev.equipo_trabajo', string = "Id equipo")
+     #equipo_trabajo_code = fields.Char(related = 'equipo_trabajo_id.code')
 
      # Un  mantenimiento concreto es certificado por una empresa OCA,
      # pero una empresa OCA certifica muchos mantenimientos
      # mantenimiento [n] : oca [1]
      oca_id = fields.Many2one('mantenprev.oca')
-     oca_name = fields.Char(related = 'oca_id.name')
+     #oca_name = fields.Char(related = 'oca_id.name')
 
      # Un mantenimiento concreto tiene un informe asociado
      # un informe en concreto solo es de un mantenimiento concreto
@@ -27,16 +29,16 @@ class mantenimiento(models.Model):
      #--------------------------------------------------------------
      # Parte de mantenimiento [n] : informe [1]
      informe_id = fields.Many2one('mantenprev.informe')
-     informe_name = fields.Char(related = 'informe_id.code')
+     #informe_name = fields.Char(related = 'informe_id.code')
      
      # Parte de mantenimiento [1] : informe [n]
-     mi_informe_id = fields.One2many('mantenprev.informe','mi_mantenimiento_id')   
+     su_informe_id = fields.One2many('mantenprev.informe','mi_mantenimiento_id', string = "Informes")   
 
      # Un mantenimiento concreto es de un emplazamiento
      # pero un emplazamiento puede tener muchos mantenimientos
      # mantenimiento [n] : emplazamiento [1]
      emplazamiento_id = fields.Many2one('mantenprev.emplazamiento')
-     emplazamiento = fields.Char(required = True, related = 'emplazamiento_id.name', string = "Emplazamiento")
+     #emplazamiento = fields.Char(required = True, related = 'emplazamiento_id.name', string = "Emplazamiento")
 
      # Un mantenimiento concreto produce una orden de facturación
      # una orden de facturación concreta es producida por un mantenimiento concreto

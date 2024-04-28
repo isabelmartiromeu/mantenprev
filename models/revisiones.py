@@ -28,7 +28,7 @@ class revisiones(models.Model):
 
 
      emplazamiento_id = fields.Many2one('mantenprev.emplazamiento')
-     emplazamiento = fields.Char(required = True, related = 'emplazamiento_id.name', string = "Emplazamiento")
+     #emplazamiento = fields.Char(required = True, related = 'emplazamiento_id.name', string = "Emplazamiento")
 
 
     # Muestra el nombre del responsable de la empresa del cliente 
@@ -56,6 +56,7 @@ class revisiones(models.Model):
      def _onchange_emplazamiento_id(self):
         if self.emplazamiento_id:
             responsable_emplazamiento = self.emplazamiento_id.responsable_id
+            print("Entra en @api.onchange('emplazamiento_id')")
             if responsable_emplazamiento:
                 self.responsable_id = responsable_emplazamiento.name
                 self.responsable_email = responsable_emplazamiento.email
@@ -73,9 +74,10 @@ class revisiones(models.Model):
 
         # Obtén el valor del campo responsable_email
         responsable_email = new_record.responsable_email
+        f_revision = new_record.fecha_revision
 
         # Construye el cuerpo del correo electrónico
-        body_html = 'Se va a realizar una revisión de mantenimiento.'
+        body_html = 'Se va a realizar una revisión de mantenimiento el próximo día {f_revision}.'
         if new_record.estado == 'Problemas de pago':
             body_html += f'\nEl estado del emplazamiento se encuentra con: {new_record.estado}, por favor póngase en contacto con nosotros'
 
@@ -93,14 +95,18 @@ class revisiones(models.Model):
         return new_record
 
      def write(self, values):
+     # Se ejecutará cuando se actualice un registro del modelo
         # Llama a la escritura del registro 
         result = super(revisiones, self).write(values)
 
         # Obtén el valor del campo responsable_email
         responsable_email = self.responsable_email
+        f_revision = self.fecha_revision
+
+        print("Entra en el método de modificación")
 
         # Construye el cuerpo del correo electrónico
-        body_html = 'Se va a realizar una revisión de mantenimiento.'
+        body_html = 'Se va a realizar una revisión de mantenimiento el próximo día {f_revision}.'
         if 'estado' in values and values['estado'] == 'Problemas de pago':
             body_html += f'\nEl estado del emplazamiento se encuentra con: {self.estado}, por favor póngase en contacto con nosotros'
 

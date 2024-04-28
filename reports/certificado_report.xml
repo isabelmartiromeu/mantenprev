@@ -1,0 +1,44 @@
+<odoo>
+  <!-- name nombre de la accion -->
+  <record id="certificado_pdf_report" model="ir.actions.report">
+    <field name="name">Certificado OCA</field>
+    <field name="model">mantenprev.certificado</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">mantenprev.report_certificado</field>
+    <field name="binding_model_id" ref="model_mantenprev_certificado"/>
+    <field name="binding_type">report</field>
+    <field name="binding_view_types">list,form</field>
+    <field name="print_report_name">'Ficha certificado - %s' % (object.code)</field>
+  </record>
+ 
+    
+  <template id="mantenprev.report_certificado">
+    <t t-call="web.html_container">
+      <!-- por si se mandará a imprimir varios certificados -->
+      <t t-foreach="docs" t-as="record">
+         <t t-call="web.external_layout">
+          <div class="page">
+            <h2>certificado</h2>
+            <p><span>Código:</span><t t-esc="record.code"/></p>
+            <p><span>Número de referencia:</span><t t-esc="record.name"/></p>
+            <p><span>Titular:</span><t t-esc="record.titular"/></p>
+            <p><span>Resultado:</span><t t-esc="record.resultado"/></p>
+            <p><span>Año reglamento:</span><t t-esc="record.anyo"/></p>
+            <p><span>Tipo de inspección:</span><t t-esc="record.tipo"/></p>
+            <p><span>Empresa OCA:</span><t t-esc="record.oca_name"/></p>
+
+             <h1><t t-esc="record.display_name"/></h1>
+            <dl>
+            <t t-foreach="record._fields" t-as="field">
+              <dt><t t-esc="field"/></dt>
+              <dd><t t-esc="record[field]"/></dd>
+            </t>
+          </dl>
+
+          </div>
+         </t>
+      </t>
+    </t>
+  </template>
+
+</odoo>

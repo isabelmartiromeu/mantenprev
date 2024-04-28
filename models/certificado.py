@@ -31,3 +31,6 @@ class certificado(models.Model):
           ('name_uniq_certificado', 'unique(name)', 'El nombre debe ser único'),
      ]
 
+     def imprimir_informe(self):
+	     return self.env.ref('mantenprev.certificado_pdf_report').report_action(self)
+
