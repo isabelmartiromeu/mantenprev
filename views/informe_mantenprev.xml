@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id="plantilla_informe_mantenimiento" model="ir.ui.view">
         <field name="name">informe.form.inherit</field>
@@ -15,4 +15,4 @@
             </xpath>
         </field>
     </record>
-</odoo>
+</odoo> -->

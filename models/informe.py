@@ -13,6 +13,7 @@ class informe(models.Model):
      #_inherit = 'mantenprev.informe'
 
      code = fields.Char(size = 6, required = True, string = "Código")
+     name = fields.Char(required = True, string = "Descripción")
      result = fields.Selection([('positivo', 'Positivo'), ('negativo', 'Negativo'), ('pendiente', 'Pendiente')], required = True, default = 'positivo', string = 'Resultado')
 
      observ = fields.Text(required = True, string = "Observaciones")

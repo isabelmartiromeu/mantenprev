@@ -10,6 +10,7 @@ class mantenimiento(models.Model):
      _description = 'mantenprev.mantenimiento'
 
      code = fields.Char(size = 6, required = True, string = "Código")
+     name = fields.Char(required = True, string = "Descripción")
 
      # Un mantenimiento concreto es realizado por un equipo de trabajo
      # pero un equipo de trabajo realiza muchos trabajos de mantenimiento
@@ -42,8 +43,16 @@ class mantenimiento(models.Model):
 
      # Un mantenimiento concreto produce una orden de facturación
      # una orden de facturación concreta es producida por un mantenimiento concreto
-     # Esto es una comunicación con el departamento de facturación, no una vista.
-
+     # Se comunicará al departamento de facturación.
+     # mantenimiento [1] : orden_facturacion [1]
+     #--------------------------------------------------------------
+     # Parte de mantenimiento [n] : orden_facturacion  [1]
+     orden_facturacion_id = fields.Many2one('mantenprev.orden_facturacion')
+     # Parte de mantenimiento [1] : orden_facturacion [n]
+     orden_facturacion_name = fields.One2many('mantenprev.orden_facturacion','su_orden_facturacion_id', string = "Orden de facturación")   
+     
+     # Parte de mantenimiento [1] : informe [n]
+     su_informe_id = fields.One2many('mantenprev.informe','mi_mantenimiento_id', string = "Informes")   
      _sql_constraints = [
           ('code_uniq_mantenimiento', 'unique(code)', 'El código debe ser único'),
      ]

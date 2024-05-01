@@ -50,7 +50,7 @@ class revisiones(models.Model):
         else:
             return {'domain': {'emplazamiento_id': []}}
         
-    # Cuando se elige un emplazmiento, se mostrará el responsable de la empresa del cliente
+    # Cuando se elige un emplazamiento, se mostrará el responsable de la empresa del cliente
 
      @api.onchange('emplazamiento_id')
      def _onchange_emplazamiento_id(self):

@@ -75,6 +75,12 @@
       <field name="res_model">mantenprev.mantenimiento</field>
       <field name="view_mode">tree,form</field>
     </record>
+    
+    <record model="ir.actions.act_window" id="mantenprev.action_window_orden_facturacion">
+      <field name="name">Orden de facturación</field>
+      <field name="res_model">mantenprev.orden_facturacion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
 
     <!-- Top menu item -->
 
@@ -111,5 +117,8 @@
 
     <menuitem name="Mantenimiento" id="mantenprev.mantenimiento_list" parent="mantenprev.menu_1"
               action="mantenprev.action_window_mantenimiento"/>  
+              
+    <menuitem name="Orden de facturación" id="mantenprev.orden_facturacion_list" parent="mantenprev.menu_1"
+              action="mantenprev.action_window_orden_facturacion"/>  
   </data>
 </odoo>

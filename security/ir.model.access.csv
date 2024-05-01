@@ -8,3 +8,4 @@ access_mantenprev_responsable,mantenprev.responsable,model_mantenprev_responsabl
 access_mantenprev_certificado,mantenprev.certificado,model_mantenprev_certificado,base.group_user,1,1,1,1
 access_mantenprev_revisiones,mantenprev.revisiones,model_mantenprev_revisiones,base.group_user,1,1,1,1
 access_mantenprev_mantenimiento,mantenprev.mantenimiento,model_mantenprev_mantenimiento,base.group_user,1,1,1,1
+access_mantenprev_orden_facturacion,mantenprev.orden_facturacion,model_mantenprev_orden_facturacion,base.group_user,1,1,1,1

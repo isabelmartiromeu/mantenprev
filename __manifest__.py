@@ -27,7 +27,7 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-
+        'reports/orden_facturacion_report.xml',
         'reports/informe_report.xml',
         'reports/certificado_report.xml',
     ],
