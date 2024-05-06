@@ -1,0 +1,38 @@
+<odoo>
+  <data>
+    <record id="mantenprev.category_group" model="ir.module.category">
+      <field name="name">Mantenimiento Preventivo</field>
+    </record>
+
+    <record id="mantenprev.grupo_empleados" model="res.groups">
+        <field name="name">Grupo Empleados para Mantenimiento Preventivo</field>
+        <field name="comment">Permisos para el grupo de empleados.</field>
+        <field name="category_id" ref="mantenprev.category_group"/>
+    </record>
+
+    <record id="mantenprev.grupo_administracion" model="res.groups">
+        <field name="name">Grupo Administrativos para Mantenimiento Preventivo</field>
+        <field name="comment">Permisos para el grupo de administrativos.</field>
+        <field name="category_id" ref="mantenprev.category_group"/>
+    </record>
+
+    <record id="mantenprev.grupo_rrhh" model="res.groups">
+        <field name="name">Grupo RRHH para Mantenimiento Preventivo</field>
+        <field name="comment">Permisos para el grupo de rrhh.</field>
+        <field name="category_id" ref="mantenprev.category_group"/>
+    </record>
+
+    <record id="mantenprev.grupo_contabilidad" model="res.groups">
+        <field name="name">Grupo Contabilidad para Mantenimiento Preventivo</field>
+        <field name="comment">Permisos para el grupo de contabilidad.</field>
+        <field name="category_id" ref="mantenprev.category_group"/>
+    </record>
+
+    <record id="mantenprev.grupo_tecnico" model="res.groups">
+        <field name="name">Grupo Técnico para Mantenimiento Preventivo</field>
+        <field name="comment">Permisos para el grupo de técnicos.</field>
+        <field name="category_id" ref="mantenprev.category_group"/>
+    </record>
+
+  </data>
+</odoo>

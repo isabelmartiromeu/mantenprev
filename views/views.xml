@@ -10,23 +10,37 @@
     </record>
 
 
-    <!-- <record model="ir.ui.view" id="mantenprev.action_window_revisiones">
-      <field name="name">Listado de revisiones</field>
-      <field name="model">mantenprev.revisiones</field>
-      <field name="view_mode" type="xml">
-          <tree>
+    <!-- <record model="ir.ui.view" id="view_revision_tree">
+        <field name="name">mantenprev.revision.tree</field>
+        <field name="model">mantenprev.revisiones</field>
+        <field name="arch" type="xml">
+            <tree string="Revisiones">
+                <field name="code"/>
+                <field name="ciudad"/>
+                <field name="fecha_revision"/>
+                <field name="estado"/>
 
-            <field name="code"/>
-            <field name="ciudad"/>
-            <field name="fecha_revision"/>
-            <field name="estado"/>
-            <field name="emplazamiento_id"/>
-            <field name="responsable_id"/>
-            <field name="responsable_email"/>
+                <field name="dentro_de_una_semana" invisible="1"/>
 
-          </tree>
-      </field>
+                <field name="dentro_de_una_semana" style="background-color: yellow;"/>
+            </tree>
+        </field>
     </record> -->
+
+    <!-- <record id="css_style_revision_tree" model="ir.ui.view">
+        <field name="name">mantenprev.revision.tree.style</field>
+        <field name="model">ir.ui.view</field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+
+                <attribute name="colors">dentro_de_una_semana:yellow:Ligero amarillo claro</attribute>
+            </xpath>
+        </field>
+    </record> -->
+
+
+
+
 
     <record model="ir.actions.act_window" id="mantenprev.action_window_informe">
       <field name="name">Ventana Informe</field>

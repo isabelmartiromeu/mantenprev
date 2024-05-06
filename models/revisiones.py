@@ -3,6 +3,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
+from datetime import datetime, timedelta
 
 class revisiones(models.Model):
      _name = 'mantenprev.revisiones'
@@ -38,6 +39,22 @@ class revisiones(models.Model):
      _sql_constraints = [
          ('code_uniq_revisiones', 'unique(code)', 'El código debe ser único'),
      ]
+
+
+    # Definimos un campo calculado para controlar si la fecha de revisión esta dentro de la semana siguiente.
+     dentro_de_una_semana = fields.Boolean(compute='_compute_dentro_de_una_semana', string="Dentro de una semana", store=True)
+
+     @api.depends('fecha_revision')
+     def _compute_dentro_de_una_semana(self):
+        today = fields.Date.today()
+        for record in self:
+            if record.fecha_revision:
+                fecha_revision = fields.Date.from_string(record.fecha_revision)
+                una_semana_despues = today + timedelta(days=7)
+                record.dentro_de_una_semana = today <= fecha_revision <= una_semana_despues
+            else:
+                record.dentro_de_una_semana = False
+
 
     # Cuando se elige un cliente, solamente se mostrarán los emplazamientos
     # pertenecientes a ese cliente en concreto.
