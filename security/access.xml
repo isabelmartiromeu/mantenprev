@@ -1,7 +1,8 @@
 <odoo>
   <data>
      <!-- Información sobre la OCA -->
-    <record id="mantenprev.incidencia_validation_access_empleado" model="ir.model.access">
+    <!-- Los empleados normales pueden ser los técnicos que trabajan sin responsabilidad --> 
+    <record id="mantenprev.oca_validation_access_empleado" model="ir.model.access">
       <field name="name">Acceso de los empleados normales a la OCA</field>
       <field name="model_id" ref="model_mantenprev_oca"/>
       <field name="group_id" ref="mantenprev.grupo_empleados"/>
@@ -10,8 +11,8 @@
       <field name="perm_write">0</field>
       <field name="perm_unlink">0</field>
     </record>
-
-    <record id="mantenprev.incidencia_validation_access_tecnico" model="ir.model.access">
+    <!-- El departamento técnico son personas responsables del mantenimiento, no son técnicos normales -->
+    <record id="mantenprev.oca_validation_access_tecnico" model="ir.model.access">
       <field name="name">Acceso del departamento técnico a la OCA</field>
       <field name="model_id" ref="model_mantenprev_oca"/>
       <field name="group_id" ref="mantenprev.grupo_tecnico"/>
@@ -21,7 +22,7 @@
       <field name="perm_unlink">1</field>
     </record>
 
-    <record id="mantenprev.incidencia_validation_access_rrhh" model="ir.model.access">
+    <record id="mantenprev.oca_validation_access_rrhh" model="ir.model.access">
       <field name="name">Acceso del departamento de RRHH a la OCA</field>
       <field name="model_id" ref="model_mantenprev_oca"/>
       <field name="group_id" ref="mantenprev.grupo_rrhh"/>
@@ -31,7 +32,7 @@
       <field name="perm_unlink">0</field>
     </record>
 
-    <record id="mantenprev.incidencia_validation_access_administracion" model="ir.model.access">
+    <record id="mantenprev.oca_validation_access_administracion" model="ir.model.access">
       <field name="name">Acceso del departamento de administración a la OCA</field>
       <field name="model_id" ref="model_mantenprev_oca"/>
       <field name="group_id" ref="mantenprev.grupo_administracion"/>
@@ -41,9 +42,419 @@
       <field name="perm_unlink">0</field>
     </record>
 
-    <record id="mantenprev.incidencia_validation_access_contabilidad" model="ir.model.access">
+    <record id="mantenprev.oca_validation_access_contabilidad" model="ir.model.access">
       <field name="name">Acceso del departamento de Contabilidad a la OCA</field>
       <field name="model_id" ref="model_mantenprev_oca"/>
+      <field name="group_id" ref="mantenprev.grupo_contabilidad"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+
+     <!-- Información sobre Orden de facturacion -->
+    <record id="mantenprev.orden_facturacion_validation_access_empleado" model="ir.model.access">
+      <field name="name">Acceso de los empleados normales a la Orden de facturación</field>
+      <field name="model_id" ref="model_mantenprev_orden_facturacion"/>
+      <field name="group_id" ref="mantenprev.grupo_empleados"/>
+      <field name="perm_read">0</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.orden_facturacion_validation_access_tecnico" model="ir.model.access">
+      <field name="name">Acceso del departamento técnico a la Orden de facturación</field>
+      <field name="model_id" ref="model_mantenprev_orden_facturacion"/>
+      <field name="group_id" ref="mantenprev.grupo_tecnico"/>
+      <field name="perm_read">0</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.orden_facturacion_validation_access_rrhh" model="ir.model.access">
+      <field name="name">Acceso del departamento de RRHH a la Orden de facturación</field>
+      <field name="model_id" ref="model_mantenprev_orden_facturacion"/>
+      <field name="group_id" ref="mantenprev.grupo_rrhh"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.orden_facturacion_validation_access_administracion" model="ir.model.access">
+      <field name="name">Acceso del departamento de administración a la Orden de facturación</field>
+      <field name="model_id" ref="model_mantenprev_orden_facturacion"/>
+      <field name="group_id" ref="mantenprev.grupo_administracion"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="mantenprev.orden_facturacion_validation_access_contabilidad" model="ir.model.access">
+      <field name="name">Acceso del departamento de Contabilidad a la Orden de facturación</field>
+      <field name="model_id" ref="model_mantenprev_orden_facturacion"/>
+      <field name="group_id" ref="mantenprev.grupo_contabilidad"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+     <!-- Información sobre Informes de mantenimiento -->
+    <record id="mantenprev.informe_validation_access_empleado" model="ir.model.access">
+      <field name="name">Acceso de los empleados normales al Informe de Mantenimiento</field>
+      <field name="model_id" ref="model_mantenprev_informe"/>
+      <field name="group_id" ref="mantenprev.grupo_empleados"/>
+      <field name="perm_read">0</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.informe_validation_access_tecnico" model="ir.model.access">
+      <field name="name">Acceso del departamento técnico al Informe de Mantenimiento</field>
+      <field name="model_id" ref="model_mantenprev_informe"/>
+      <field name="group_id" ref="mantenprev.grupo_tecnico"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="mantenprev.informe_validation_access_rrhh" model="ir.model.access">
+      <field name="name">Acceso del departamento de RRHH al Informe de Mantenimiento</field>
+      <field name="model_id" ref="model_mantenprev_informe"/>
+      <field name="group_id" ref="mantenprev.grupo_rrhh"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.informe_validation_access_administracion" model="ir.model.access">
+      <field name="name">Acceso del departamento de administración al Informe de Mantenimiento</field>
+      <field name="model_id" ref="model_mantenprev_informe"/>
+      <field name="group_id" ref="mantenprev.grupo_administracion"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.informe_validation_access_contabilidad" model="ir.model.access">
+      <field name="name">Acceso del departamento de Contabilidad al Informe de Mantenimiento</field>
+      <field name="model_id" ref="model_mantenprev_informe"/>
+      <field name="group_id" ref="mantenprev.grupo_contabilidad"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <!-- Información sobre Certificados de las OCAs -->
+    <record id="mantenprev.certificado_validation_access_empleado" model="ir.model.access">
+      <field name="name">Acceso de los empleados normales a los Certificados de las OCAs</field>
+      <field name="model_id" ref="model_mantenprev_certificado"/>
+      <field name="group_id" ref="mantenprev.grupo_empleados"/>
+      <field name="perm_read">0</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.certificado_validation_access_tecnico" model="ir.model.access">
+      <field name="name">Acceso del departamento técnico a los Certificados de las OCAs</field>
+      <field name="model_id" ref="model_mantenprev_certificado"/>
+      <field name="group_id" ref="mantenprev.grupo_tecnico"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="mantenprev.certificado_validation_access_rrhh" model="ir.model.access">
+      <field name="name">Acceso del departamento de RRHH a los Certificados de las OCAs</field>
+      <field name="model_id" ref="model_mantenprev_certificado"/>
+      <field name="group_id" ref="mantenprev.grupo_rrhh"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.certificado_validation_access_administracion" model="ir.model.access">
+      <field name="name">Acceso del departamento de administración a los Certificados de las OCAs</field>
+      <field name="model_id" ref="model_mantenprev_certificado"/>
+      <field name="group_id" ref="mantenprev.grupo_administracion"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.certificado_validation_access_contabilidad" model="ir.model.access">
+      <field name="name">Acceso del departamento de Contabilidad a los Certificados de las OCAs</field>
+      <field name="model_id" ref="model_mantenprev_certificado"/>
+      <field name="group_id" ref="mantenprev.grupo_contabilidad"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <!-- Información sobre los clientes -->
+    <record id="mantenprev.cliente_validation_access_empleado" model="ir.model.access">
+      <field name="name">Acceso de los empleados normales a la información sobre clientes</field>
+      <field name="model_id" ref="model_mantenprev_cliente"/>
+      <field name="group_id" ref="mantenprev.grupo_empleados"/>
+      <field name="perm_read">0</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.cliente_validation_access_tecnico" model="ir.model.access">
+      <field name="name">Acceso del departamento técnico a la información sobre clientes</field>
+      <field name="model_id" ref="model_mantenprev_cliente"/>
+      <field name="group_id" ref="mantenprev.grupo_tecnico"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="mantenprev.cliente_validation_access_rrhh" model="ir.model.access">
+      <field name="name">Acceso del departamento de RRHH a la información sobre clientes</field>
+      <field name="model_id" ref="model_mantenprev_cliente"/>
+      <field name="group_id" ref="mantenprev.grupo_rrhh"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.cliente_validation_access_administracion" model="ir.model.access">
+      <field name="name">Acceso del departamento de administración a la información sobre clientes</field>
+      <field name="model_id" ref="model_mantenprev_cliente"/>
+      <field name="group_id" ref="mantenprev.grupo_administracion"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="mantenprev.cliente_validation_access_contabilidad" model="ir.model.access">
+      <field name="name">Acceso del departamento de Contabilidad a la información sobre clientes</field>
+      <field name="model_id" ref="model_mantenprev_cliente"/>
+      <field name="group_id" ref="mantenprev.grupo_contabilidad"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <!-- Información sobre los emplazamientos de los clientes -->
+    <record id="mantenprev.emplazamiento_validation_access_empleado" model="ir.model.access">
+      <field name="name">Acceso de los empleados normales a los emplazamientos de los clientes</field>
+      <field name="model_id" ref="model_mantenprev_emplazamiento"/>
+      <field name="group_id" ref="mantenprev.grupo_empleados"/>
+      <field name="perm_read">0</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.emplazamiento_validation_access_tecnico" model="ir.model.access">
+      <field name="name">Acceso del departamento técnico a los emplazamientos de los clientes</field>
+      <field name="model_id" ref="model_mantenprev_emplazamiento"/>
+      <field name="group_id" ref="mantenprev.grupo_tecnico"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="mantenprev.emplazamiento_validation_access_rrhh" model="ir.model.access">
+      <field name="name">Acceso del departamento de RRHH a los emplazamientos de los clientes</field>
+      <field name="model_id" ref="model_mantenprev_emplazamiento"/>
+      <field name="group_id" ref="mantenprev.grupo_rrhh"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.emplazamiento_validation_access_administracion" model="ir.model.access">
+      <field name="name">Acceso del departamento de administración a los emplazamientos de los clientes</field>
+      <field name="model_id" ref="model_mantenprev_emplazamiento"/>
+      <field name="group_id" ref="mantenprev.grupo_administracion"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="mantenprev.emplazamiento_validation_access_contabilidad" model="ir.model.access">
+      <field name="name">Acceso del departamento de Contabilidad a los emplazamientos de los clientes</field>
+      <field name="model_id" ref="model_mantenprev_emplazamiento"/>
+      <field name="group_id" ref="mantenprev.grupo_contabilidad"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+
+     <!-- Información sobre la planificación del mantenimiento -->
+    <record id="mantenprev.mantenimiento_validation_access_empleado" model="ir.model.access">
+      <field name="name">Acceso de los empleados normales a la planificación del mantenimiento</field>
+      <field name="model_id" ref="model_mantenprev_mantenimiento"/>
+      <field name="group_id" ref="mantenprev.grupo_empleados"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.mantenimiento_validation_access_tecnico" model="ir.model.access">
+      <field name="name">Acceso del departamento técnico a la planificación del mantenimiento</field>
+      <field name="model_id" ref="model_mantenprev_mantenimiento"/>
+      <field name="group_id" ref="mantenprev.grupo_tecnico"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="mantenprev.mantenimiento_validation_access_rrhh" model="ir.model.access">
+      <field name="name">Acceso del departamento de RRHH a la planificación del mantenimiento</field>
+      <field name="model_id" ref="model_mantenprev_mantenimiento"/>
+      <field name="group_id" ref="mantenprev.grupo_rrhh"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.mantenimiento_validation_access_administracion" model="ir.model.access">
+      <field name="name">Acceso del departamento de administración a la planificación del mantenimiento</field>
+      <field name="model_id" ref="model_mantenprev_mantenimiento"/>
+      <field name="group_id" ref="mantenprev.grupo_administracion"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.mantenimiento_validation_access_contabilidad" model="ir.model.access">
+      <field name="name">Acceso del departamento de Contabilidad a la planificación del mantenimiento</field>
+      <field name="model_id" ref="model_mantenprev_mantenimiento"/>
+      <field name="group_id" ref="mantenprev.grupo_contabilidad"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+     <!-- Información sobre las revisiones -->
+    <record id="mantenprev.revisiones_validation_access_empleado" model="ir.model.access">
+      <field name="name">Acceso de los empleados normales a las revisiones realizadas</field>
+      <field name="model_id" ref="model_mantenprev_revisiones"/>
+      <field name="group_id" ref="mantenprev.grupo_empleados"/>
+      <field name="perm_read">0</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.revisiones_validation_access_tecnico" model="ir.model.access">
+      <field name="name">Acceso del departamento técnico a las revisiones realizadas</field>
+      <field name="model_id" ref="model_mantenprev_revisiones"/>
+      <field name="group_id" ref="mantenprev.grupo_tecnico"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="mantenprev.revisiones_validation_access_rrhh" model="ir.model.access">
+      <field name="name">Acceso del departamento de RRHH a las revisiones realizadas</field>
+      <field name="model_id" ref="model_mantenprev_revisiones"/>
+      <field name="group_id" ref="mantenprev.grupo_rrhh"/>
+      <field name="perm_read">0</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.revisiones_validation_access_administracion" model="ir.model.access">
+      <field name="name">Acceso del departamento de administración a las revisiones realizadas</field>
+      <field name="model_id" ref="model_mantenprev_revisiones"/>
+      <field name="group_id" ref="mantenprev.grupo_administracion"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.revisiones_validation_access_contabilidad" model="ir.model.access">
+      <field name="name">Acceso del departamento de Contabilidad a las revisiones realizadas</field>
+      <field name="model_id" ref="model_mantenprev_revisiones"/>
+      <field name="group_id" ref="mantenprev.grupo_contabilidad"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+     <!-- Información sobre los responsables de los departamentos -->
+    <record id="mantenprev.responsable_validation_access_empleado" model="ir.model.access">
+      <field name="name">Acceso de los empleados normales a la información de los responsables</field>
+      <field name="model_id" ref="model_mantenprev_responsable"/>
+      <field name="group_id" ref="mantenprev.grupo_empleados"/>
+      <field name="perm_read">0</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.responsable_validation_access_tecnico" model="ir.model.access">
+      <field name="name">Acceso del departamento técnico a la información de los responsables</field>
+      <field name="model_id" ref="model_mantenprev_responsable"/>
+      <field name="group_id" ref="mantenprev.grupo_tecnico"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.responsable_validation_access_rrhh" model="ir.model.access">
+      <field name="name">Acceso del departamento de RRHH a la información de los responsables</field>
+      <field name="model_id" ref="model_mantenprev_responsable"/>
+      <field name="group_id" ref="mantenprev.grupo_rrhh"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">1</field>
+      <field name="perm_write">1</field>
+      <field name="perm_unlink">1</field>
+    </record>
+
+    <record id="mantenprev.responsable_validation_access_administracion" model="ir.model.access">
+      <field name="name">Acceso del departamento de administración a la información de los responsables</field>
+      <field name="model_id" ref="model_mantenprev_responsable"/>
+      <field name="group_id" ref="mantenprev.grupo_administracion"/>
+      <field name="perm_read">1</field>
+      <field name="perm_create">0</field>
+      <field name="perm_write">0</field>
+      <field name="perm_unlink">0</field>
+    </record>
+
+    <record id="mantenprev.responsable_validation_access_contabilidad" model="ir.model.access">
+      <field name="name">Acceso del departamento de Contabilidad a la información de los responsables</field>
+      <field name="model_id" ref="model_mantenprev_responsable"/>
       <field name="group_id" ref="mantenprev.grupo_contabilidad"/>
       <field name="perm_read">1</field>
       <field name="perm_create">0</field>

@@ -6,7 +6,7 @@ class certificado(models.Model):
      _name = 'mantenprev.certificado'
      _description = 'mantenprev.certificado'
 
-     code = fields.Char(size = 6, required = True, string = "Código")
+     #code = fields.Char(size = 6, required = True, string = "Código")
      name = fields.Char(required = True, string = "Número de referencia")
 
      #El titular es un cliente. 
@@ -27,7 +27,7 @@ class certificado(models.Model):
 
 
      _sql_constraints = [
-          ('code_uniq_certificado', 'unique(code)', 'El código debe ser único'),
+         # ('code_uniq_certificado', 'unique(code)', 'El código debe ser único'),
           ('name_uniq_certificado', 'unique(name)', 'El nombre debe ser único'),
      ]
 

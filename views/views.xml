@@ -1,6 +1,181 @@
 <odoo>
   <data>
 
+    <!-- Revisiones -->
+
+    <record model="ir.ui.view" id="mantenprev.tree_revisiones">
+      <field name="name">Listado de revisiones</field>
+      <field name="model">mantenprev.revisiones</field>
+      <field name="arch" type="xml">
+        <tree string="Revisiones" >
+            <field name="name" />
+            <field name="fecha_revision" />
+            <field name="ciudad" />
+            <field name="estado" />
+            <field name="emplazamiento_id" />
+            <field name="responsable_id" />
+            <field name="responsable_email" />
+            <field name="dentro_de_una_semana" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Cliente -->
+
+    <record model="ir.ui.view" id="mantenprev.tree_cliente">
+      <field name="name">Listado de clientes</field>
+      <field name="model">mantenprev.cliente</field>
+      <field name="arch" type="xml">
+        <tree string="Cliente" >
+            <field name="name" />
+            <field name="CIF_cli" />
+            <field name="IBAN_cli" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Informes -->
+
+    <record model="ir.ui.view" id="mantenprev.tree_informe">
+      <field name="name">Listado de informes</field>
+      <field name="model">mantenprev.informe</field>
+      <field name="arch" type="xml">
+        <tree string="Informe" >
+            <field name="name" />
+            <field name="result" />
+            <field name="observ" />
+            <field name="solic_correc" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- <record model="ir.ui.view" id="mantenprev.form_informe">
+      <field name="name">Listado de Informe</field>
+      <field name="model">mantenprev.informe</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name" />
+            <field name="result" />
+            <field name="observ" />
+            <field name="solic_correc" />
+            <field name="mi_mantenimiento_name" />
+            
+          </group>
+        </form>
+      </field>
+    </record> -->
+
+    <!-- Equipo trabajo -->
+
+    <record model="ir.ui.view" id="mantenprev.tree_equipo_trabajo">
+      <field name="name">Listado de Equipo de trabajo</field>
+      <field name="model">mantenprev.equipo_trabajo</field>
+      <field name="arch" type="xml">
+        <tree string="Equipo trabajo" >
+            <field name="name" />
+            <field name="ciudad" />
+            <field name="especialidad" />
+            <field name="email_responsable" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- OCA -->
+
+    <record model="ir.ui.view" id="mantenprev.tree_oca">
+      <field name="name">Listado de OCA</field>
+      <field name="model">mantenprev.oca</field>
+      <field name="arch" type="xml">
+        <tree string="OCA" >
+            <field name="name" />
+            <field name="certificado_id" />
+            <field name="mantenimiento_id" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Emplazamiento -->
+
+    <record model="ir.ui.view" id="mantenprev.tree_emplazamiento">
+      <field name="name">Listado de Emplazamientos</field>
+      <field name="model">mantenprev.emplazamiento</field>
+      <field name="arch" type="xml">
+        <tree string="Emplazamientos" >
+            <field name="cliente" />
+            <field name="name" />
+            <field name="ciudad" />
+            <field name="localizacion" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Responsable -->
+
+    <record model="ir.ui.view" id="mantenprev.tree_responsable">
+      <field name="name">Listado de Responsables</field>
+      <field name="model">mantenprev.responsable</field>
+      <field name="arch" type="xml">
+        <tree string="Responsable" >
+            <field name="name" />
+            <field name="movil" />
+            <field name="email" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Certificado -->
+
+    <record model="ir.ui.view" id="mantenprev.tree_certificado">
+      <field name="name">Listado de Certificados OCA</field>
+      <field name="model">mantenprev.certificado</field>
+      <field name="arch" type="xml">
+        <tree string="Certificado OCA" >
+            <field name="name" />
+            <field name="titular" />
+            <field name="resultado" />
+            <field name="anyo" />
+            <field name="tipo" />
+            <field name="oca_name" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Mantenimiento -->
+
+    <record model="ir.ui.view" id="mantenprev.tree_mantenimiento">
+      <field name="name">Listado de Mantenimiento Preventivo</field>
+      <field name="model">mantenprev.mantenimiento</field>
+      <field name="arch" type="xml">
+        <tree string="Mantenimiento" >
+            <field name="code" />
+            <field name="name" />
+            <field name="equipo_trabajo_id" />
+            <field name="oca_id" />
+            <field name="informe_id" />
+            <field name="su_informe_id" />
+            <field name="emplazamiento_id" />
+            <field name="orden_facturacion_name" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Orden facturación -->
+
+    <record model="ir.ui.view" id="mantenprev.tree_orden_facturacion">
+      <field name="name">Listado de órdenes facturación</field>
+      <field name="model">mantenprev.orden_facturacion</field>
+      <field name="arch" type="xml">
+        <tree string="Orden facturacion" >
+            <field name="name" />
+            <field name="num_horas" />
+            <field name="email_aviso" />
+            <field name="mantenimiento_id" />
+            <field name="orden_facturacion_name" />
+        </tree>
+      </field>
+    </record> 
+
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="mantenprev.action_window_revisiones">
@@ -9,39 +184,6 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-
-    <!-- <record model="ir.ui.view" id="view_revision_tree">
-        <field name="name">mantenprev.revision.tree</field>
-        <field name="model">mantenprev.revisiones</field>
-        <field name="arch" type="xml">
-            <tree string="Revisiones">
-                <field name="code"/>
-                <field name="ciudad"/>
-                <field name="fecha_revision"/>
-                <field name="estado"/>
-
-                <field name="dentro_de_una_semana" invisible="1"/>
-
-                <field name="dentro_de_una_semana" style="background-color: yellow;"/>
-            </tree>
-        </field>
-    </record> -->
-
-    <!-- <record id="css_style_revision_tree" model="ir.ui.view">
-        <field name="name">mantenprev.revision.tree.style</field>
-        <field name="model">ir.ui.view</field>
-        <field name="arch" type="xml">
-            <xpath expr="//tree" position="attributes">
-
-                <attribute name="colors">dentro_de_una_semana:yellow:Ligero amarillo claro</attribute>
-            </xpath>
-        </field>
-    </record> -->
-
-
-
-
-
     <record model="ir.actions.act_window" id="mantenprev.action_window_informe">
       <field name="name">Ventana Informe</field>
       <field name="res_model">mantenprev.informe</field>
@@ -49,7 +191,7 @@
     </record>
 
     <record model="ir.actions.act_window" id="mantenprev.action_window_equipo_trabajo">
-      <field name="name">Ventana Equipo Trabjao</field>
+      <field name="name">Ventana Equipo Trabajo</field>
       <field name="res_model">mantenprev.equipo_trabajo</field>
       <field name="view_mode">tree,form</field>
     </record>

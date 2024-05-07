@@ -7,7 +7,7 @@ class oca(models.Model):
      _name = 'mantenprev.oca'
      _description = 'mantenprev.oca'
 
-     code = fields.Char(size = 6, required = True, string = "Código")
+     #code = fields.Char(size = 6, required = True, string = "Código")
      name = fields.Char(required = True, string = "Nombre")
 
      # Una empresa de OCA tiene muchos certificados OCA  [1] : certificado [n]

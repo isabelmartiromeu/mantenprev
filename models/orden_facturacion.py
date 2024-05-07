@@ -6,7 +6,7 @@ class OrdenFacturacion(models.Model):
     _name = 'mantenprev.orden_facturacion'
     _description = 'mantenprev.orden_facturacion'
 
-    code = fields.Char(size=6, required=True, string="Código")
+    #code = fields.Char(size=6, required=True, string="Código")
     name = fields.Char(required=True, string="Número de referencia")
     num_horas = fields.Char(size=6, required=True, string="Horas a facturar")
     email_aviso = fields.Char(required=True, string="Email aviso")
@@ -24,7 +24,7 @@ class OrdenFacturacion(models.Model):
 
 
     _sql_constraints = [
-        ('code_uniq_orden_facturacion', 'unique(code)', 'El código debe ser único'),
+        #('code_uniq_orden_facturacion', 'unique(code)', 'El código debe ser único'),
         ('name_uniq_orden_facturacion', 'unique(name)', 'El número de referencia debe ser único'),
     ]
 

@@ -7,7 +7,7 @@ class equipo_trabajo(models.Model):
      _name = 'mantenprev.equipo_trabajo'
      _description = 'mantenprev.equipo_trabajo'
 
-     code = fields.Char(size = 6, required = True, string = "Código")
+     #code = fields.Char(size = 6, required = True, string = "Código")
      name = fields.Char(required = True, string = "Nombre")
      ciudad = fields.Char(required = True, string = "Ciudad")
 
