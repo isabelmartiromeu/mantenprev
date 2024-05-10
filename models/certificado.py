@@ -6,7 +6,6 @@ class certificado(models.Model):
      _name = 'mantenprev.certificado'
      _description = 'mantenprev.certificado'
 
-     #code = fields.Char(size = 6, required = True, string = "Código")
      name = fields.Char(required = True, string = "Número de referencia")
 
      #El titular es un cliente. 

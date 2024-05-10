@@ -1,0 +1,11 @@
+<odoo>
+  <data>
+    <!-- Informe -->
+    <record model="mantenprev.informe" id="mantenprev.informe_1">
+      <field name="name">Endesa - CC Arena - Abril 2024 </field>
+      <field name="result">positivo</field>
+      <field name="observ">Se revisa toda la instalación eléctrica y el CPD</field>
+      <field name="solic_correc">no</field>
+    </record>
+  </data>
+</odoo>

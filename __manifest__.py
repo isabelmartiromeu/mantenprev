@@ -45,6 +45,7 @@
         'data/demo/revisiones.xml',
         'data/demo/mantenimiento.xml',
         'data/demo/orden_facturacion.xml',
+        'data/demo/informe.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

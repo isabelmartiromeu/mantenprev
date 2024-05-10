@@ -50,6 +50,21 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="fichaje.form_registro_fichaje">
+      <field name="name">Listado de informes</field>
+      <field name="model">mantenprev.informe</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name" />
+            <field name="result" />
+            <field name="observ" />
+            <field name="solic_correc" />
+          </group>
+        </form>
+      </field>
+    </record>
+
 
     <!-- Equipo trabajo -->
 

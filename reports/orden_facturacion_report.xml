@@ -8,21 +8,20 @@
     <field name="binding_model_id" ref="model_mantenprev_orden_facturacion"/>
     <field name="binding_type">report</field>
     <field name="binding_view_types">list,form</field>
-    <field name="print_report_name">'Ficha orden facturacion - %s' % (object.code)</field>
+    <field name="print_report_name">'Ficha orden facturacion - %s' % (object.name)</field>
   </record>
  
     
   <template id="mantenprev.report_orden_facturacion">
     <t t-call="web.html_container">
-      <!-- por si se mandará a imprimir varias órdenes de facturación -->
+      <!-- por si se mandara a imprimir varias órdenes de facturación -->
       <t t-foreach="docs" t-as="record">
          <t t-call="web.external_layout">
           <div class="page">
             <h2>Orden Facturacion Mantenimiento Preventivo</h2>
-            <p><span>Código:</span><t t-esc="record.code"/></p>
             <p><span>Número de referencia:</span><t t-esc="record.name"/></p>
             <p><span>Horas a facturar:</span><t t-esc="record.num_horas"/></p>
-            <p><span>Mantenimiento:</span><t t-esc="record.su_orden_facturacion_id"/></p>
+            <p><span>Email de aviso:</span><t t-esc="email_aviso"/></p>
 
              <h1><t t-esc="record.display_name"/></h1>
             <dl>
