@@ -1,0 +1,25 @@
+<odoo>
+  <data >
+    <!-- Equipo trabajo -->
+    <record model="mantenprev.equipo_trabajo" id="mantenprev.equipo_trabajo_1">
+      <field name="name">Alicante Baja tensión</field>
+      <field name="ciudad">Alicante</field>
+      <field name="especialidad">Baja tensión</field>
+      <field name="email_responsable">equipo_alicante_bt@cover.es</field>
+    </record>
+
+    <record model="mantenprev.equipo_trabajo" id="mantenprev.equipo_trabajo_2">
+      <field name="name">Valencia Baja tensión</field>
+      <field name="ciudad">Valencia</field>
+      <field name="especialidad">Baja tensión</field>
+      <field name="email_responsable">equipo_valencia_bt@cover.es</field>
+    </record>
+
+    <record model="mantenprev.equipo_trabajo" id="mantenprev.equipo_trabajo_3">
+      <field name="name">Castellón Baja tensión</field>
+      <field name="ciudad">Castellón</field>
+      <field name="especialidad">Baja tensión</field>
+      <field name="email_responsable">equipo_castellon_bt@cover.es</field>
+    </record>
+  </data>
+</odoo>

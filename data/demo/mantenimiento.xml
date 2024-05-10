@@ -1,0 +1,12 @@
+<odoo>
+  <data>
+    <!-- Mantenimiento -->
+    <record model="mantenprev.mantenimiento" id="mantenprev.mantenimiento_1">
+      <field name="code">1</field>
+      <field name="name">Endesa - CC Arena - Abril 2024 </field>
+      <field name="equipo_trabajo_id" ref="mantenprev.equipo_trabajo_1"/>
+      <field name="oca_id" ref="mantenprev.oca_1"/>
+      <field name="emplazamiento_id" ref="mantenprev.emplazamiento_1"/>
+    </record>
+  </data>
+</odoo>

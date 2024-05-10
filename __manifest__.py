@@ -24,15 +24,32 @@
 
     # always loaded
     'data': [
+
         'security/ir.model.access.csv',
+        'security/groups.xml',
+        'security/access.xml',
+
         'views/views.xml',
         'views/templates.xml',
+
         'reports/orden_facturacion_report.xml',
         'reports/informe_report.xml',
         'reports/certificado_report.xml',
+
+        'data/demo/cliente.xml',
+        'data/demo/oca.xml',
+        'data/demo/certificado.xml',
+        'data/demo/equipo_trabajo.xml',
+        'data/demo/emplazamiento.xml',
+        'data/demo/responsable.xml',
+        'data/demo/revisiones.xml',
+        'data/demo/mantenimiento.xml',
+        'data/demo/orden_facturacion.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
+
+    #'application': True,
 }

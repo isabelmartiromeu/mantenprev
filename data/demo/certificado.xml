@@ -1,0 +1,31 @@
+<odoo>
+  <data>
+    <!-- Certificados de las OCAs -->
+    <record model="mantenprev.certificado" id="mantenprev.certificado_1">
+      <field name="name">ENDESA-CCARENA-30-05-2024</field>
+      <field name="resultado">true</field>
+      <field name="anyo">1990</field>
+      <field name="tipo">prev</field>
+      <field name="cliente_id" ref="mantenprev.cliente_1"/>
+      <field name="oca_id" ref="mantenprev.oca_1"/> 
+    </record>
+
+    <record model="mantenprev.certificado" id="mantenprev.certificado_2">
+      <field name="name">HOLALUZ-BONAIRE-07-05-2024</field>
+      <field name="resultado">true</field>
+      <field name="anyo">2000</field>
+      <field name="tipo">prev</field>
+      <field name="cliente_id" ref="mantenprev.cliente_2"/>
+      <field name="oca_id" ref="mantenprev.oca_2"/> 
+    </record>
+
+    <record model="mantenprev.certificado" id="mantenprev.certificado_3">
+      <field name="name">IBERDROLA-CCGRANVIA-06-05-2024</field>
+      <field name="resultado">true</field>
+      <field name="anyo">1992</field>
+      <field name="tipo">prev</field>
+      <field name="cliente_id" ref="mantenprev.cliente_3"/>
+      <field name="oca_id" ref="mantenprev.oca_3"/>
+    </record>
+  </data>
+</odoo>

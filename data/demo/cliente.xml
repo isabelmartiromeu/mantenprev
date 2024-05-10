@@ -1,0 +1,22 @@
+<odoo>
+  <data>
+    <!-- Clientes -->
+    <record model="mantenprev.cliente" id="mantenprev.cliente_1">
+      <field name="name">Endesa Energía SA</field>
+      <field name="CIF_cli">A81948077</field>
+      <field name="IBAN_cli">ES2114650100722030876293</field>
+    </record>
+
+    <record model="mantenprev.cliente" id="mantenprev.cliente_2">
+      <field name="name">Holaluz</field>
+      <field name="CIF_cli">A65445033</field>
+      <field name="IBAN_cli">ES9121000418450200051332</field>
+    </record>
+
+    <record model="mantenprev.cliente" id="mantenprev.cliente_3">
+      <field name="name">Iberdrola España, S.A.U</field>
+      <field name="CIF_cli">A95758355</field>
+      <field name="IBAN_cli">ES2114650100722030576282</field>
+    </record>
+  </data>
+</odoo>

@@ -16,6 +16,7 @@
             <field name="responsable_id" />
             <field name="responsable_email" />
             <field name="dentro_de_una_semana" />
+            <field name="pendiente_notificar" />
         </tree>
       </field>
     </record>
@@ -49,22 +50,6 @@
       </field>
     </record>
 
-    <!-- <record model="ir.ui.view" id="mantenprev.form_informe">
-      <field name="name">Listado de Informe</field>
-      <field name="model">mantenprev.informe</field>
-      <field name="arch" type="xml">
-        <form>
-          <group>
-            <field name="name" />
-            <field name="result" />
-            <field name="observ" />
-            <field name="solic_correc" />
-            <field name="mi_mantenimiento_name" />
-            
-          </group>
-        </form>
-      </field>
-    </record> -->
 
     <!-- Equipo trabajo -->
 
@@ -102,7 +87,7 @@
       <field name="model">mantenprev.emplazamiento</field>
       <field name="arch" type="xml">
         <tree string="Emplazamientos" >
-            <field name="cliente" />
+            <field name="cliente_id" />
             <field name="name" />
             <field name="ciudad" />
             <field name="localizacion" />
@@ -118,6 +103,7 @@
       <field name="arch" type="xml">
         <tree string="Responsable" >
             <field name="name" />
+            <field name="cliente_id" />
             <field name="movil" />
             <field name="email" />
         </tree>
@@ -170,8 +156,9 @@
             <field name="name" />
             <field name="num_horas" />
             <field name="email_aviso" />
-            <field name="mantenimiento_id" />
+            <field name="su_mantenimiento_id" />
             <field name="orden_facturacion_name" />
+            <field name="pendiente_notificar" />
         </tree>
       </field>
     </record> 

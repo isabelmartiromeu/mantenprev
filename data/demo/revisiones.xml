@@ -1,0 +1,44 @@
+<odoo>
+  <data>
+    <!-- Listado de revisiones -->
+    <record model="mantenprev.revisiones" id="mantenprev.revisiones_1">
+      <field name="code">1</field>
+      <field name="ciudad">Valencia</field>
+      <field name="fecha_revision" eval="'2024-05-17'"/>
+      <field name="estado">R</field>
+      <field name="cliente_id" ref="mantenprev.cliente_1"/>
+      <field name="emplazamiento_id" ref="mantenprev.emplazamiento_1"/> 
+      <field name="responsable_id" ref="mantenprev.responsable_1"/> 
+      <field name="responsable_email">imartir@cover.es</field>
+      <field name="dentro_de_una_semana" eval="1"/>
+      <field name="pendiente_notificar" eval="1"/>
+    </record>
+
+    <record model="mantenprev.revisiones" id="mantenprev.revisiones_2">
+      <field name="code">2</field>
+      <field name="ciudad">Valencia</field>
+      <field name="fecha_revision" eval="'2024-07-01'"/>
+      <field name="estado">A</field>
+      <field name="cliente_id" ref="mantenprev.cliente_2"/>
+      <field name="emplazamiento_id" ref="mantenprev.emplazamiento_2"/> 
+      <field name="responsable_id" ref="mantenprev.responsable_2"/> 
+      <field name="responsable_email">imartir@cover.es</field>
+      <field name="dentro_de_una_semana" eval="0"/>
+      <field name="pendiente_notificar" eval="1"/>
+    </record>
+
+    <record model="mantenprev.revisiones" id="mantenprev.revisiones_3">
+      <field name="code">3</field>
+      <field name="ciudad">Valencia</field>
+      <field name="fecha_revision" eval="'2024-07-02'"/>
+      <field name="estado">A</field>
+      <field name="cliente_id" ref="mantenprev.cliente_3"/>
+      <field name="emplazamiento_id" ref="mantenprev.emplazamiento_3"/> 
+      <field name="responsable_id" ref="mantenprev.responsable_2"/> 
+      <field name="responsable_email">imartir@cover.es</field>
+      <field name="dentro_de_una_semana" eval="1"/>
+      <field name="pendiente_notificar" eval="1"/>
+    </record>
+
+  </data>
+</odoo>

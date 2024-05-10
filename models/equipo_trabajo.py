@@ -22,5 +22,5 @@ class equipo_trabajo(models.Model):
 
 
      _sql_constraints = [
-          ('code_uniq_equipo_trabajo', 'unique(code)', 'El código debe ser único'),
+          ('name_uniq_equipo_trabajo', 'unique(name)', 'El nombre debe ser único'),
      ]

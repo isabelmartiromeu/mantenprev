@@ -31,7 +31,7 @@ class informe(models.Model):
      mi_mantenimiento_name = fields.Char(related = 'mi_mantenimiento_id.code')
 
      _sql_constraints = [
-          ('code_uniq_informe', 'unique(code)', 'El código debe ser único'),
+          ('name_uniq_informe', 'unique(name)', 'La descripción debe ser única'),
      ]
 
      def imprimir_informe(self):

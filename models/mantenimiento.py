@@ -47,9 +47,9 @@ class mantenimiento(models.Model):
      # mantenimiento [1] : orden_facturacion [1]
      #--------------------------------------------------------------
      # Parte de mantenimiento [n] : orden_facturacion  [1]
-     orden_facturacion_id = fields.Many2one('mantenprev.orden_facturacion')
+     #orden_facturacion_id = fields.Many2one('mantenprev.orden_facturacion')
      # Parte de mantenimiento [1] : orden_facturacion [n]
-     orden_facturacion_name = fields.One2many('mantenprev.orden_facturacion','su_orden_facturacion_id', string = "Orden de facturación")   
+     orden_facturacion_name = fields.One2many('mantenprev.orden_facturacion','su_mantenimiento_id', string = "Orden de facturación")   
      
      # Parte de mantenimiento [1] : informe [n]
      su_informe_id = fields.One2many('mantenprev.informe','mi_mantenimiento_id', string = "Informes")   

@@ -1,0 +1,19 @@
+<odoo>
+  <data>
+    <!-- OCA -->
+    <record model="mantenprev.oca" id="mantenprev.oca_1">
+      <field name="name">TÜV SÜD</field>
+      <!-- <field name="certificado_id" ref="mantenprev.certificado_1"/> -->
+    </record>
+
+    <record model="mantenprev.oca" id="mantenprev.oca_2">
+      <field name="name">ISEVAL</field>
+      <!-- <field name="certificado_id" ref="mantenprev.certificado_2"/> -->
+    </record>
+
+    <record model="mantenprev.oca" id="mantenprev.oca_3">
+      <field name="name">Addient</field>
+      <!-- <field name="certificado_id" ref="mantenprev.certificado_3"/> -->
+    </record>
+  </data>
+</odoo>

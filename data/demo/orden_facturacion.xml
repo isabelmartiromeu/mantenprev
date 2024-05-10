@@ -1,0 +1,13 @@
+<odoo>
+  <data>
+    <!-- Certificados de los responsables -->
+    <record model="mantenprev.orden_facturacion" id="mantenprev.orden_facturacion_1">
+      <field name="name">ENDESA-ARENA-ABRIL-2024</field>
+      <field name="num_horas">7</field>
+      <field name="email_aviso">contabilidad@cover.es</field>
+      <field name="su_mantenimiento_id" ref="mantenprev.mantenimiento_1"/> 
+      <!-- <field name="mantenimiento_id">1</field> -->
+      <field name="pendiente_notificar" eval="1"/>
+    </record>
+  </data>
+</odoo>

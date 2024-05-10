@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
+from datetime import timedelta
+from odoo.exceptions import ValidationError, UserError
 from odoo.addons.base.models.ir_mail_server import MailDeliveryException
-from datetime import datetime, timedelta
 
 class revisiones(models.Model):
      _name = 'mantenprev.revisiones'
@@ -11,9 +11,8 @@ class revisiones(models.Model):
 
      code = fields.Char(size = 6, required = True, string = "Código")
 
-     #nombre_emplazamiento = fields.Char(required = True, string = "Emplazamiento")
      ciudad = fields.Char(required = True, string = "Ciudad")
-     #fecha_revision = fields.Char(required = True, string = "Fecha revision")
+
      fecha_revision = fields.Date(required = True, string = "Fecha revision")
      estado = fields.Selection([('A', 'Activa'), ('P', 'Problemas de pago'), ('R', 'Realizada')], required = True, default = 'false', string = "Estado")
 
@@ -26,23 +25,24 @@ class revisiones(models.Model):
 
      # Un emplazamiento tiene muchas revisiones revisiones [N] : [1] emplazamiento
      # Pero además el emplazamiento pertenece a un cliente concreto.
-
-
      emplazamiento_id = fields.Many2one('mantenprev.emplazamiento')
-     #emplazamiento = fields.Char(required = True, related = 'emplazamiento_id.name', string = "Emplazamiento")
 
-
-    # Muestra el nombre del responsable de la empresa del cliente 
+     # Muestra el nombre del responsable de la empresa del cliente 
      responsable_id = fields.Char(string = "Responsable empresa",readonly=True)
-     responsable_email = fields.Char(string = "Email responsable",readonly=True)
+     responsable_email = fields.Char(string = "Email responsable")
 
      _sql_constraints = [
          ('code_uniq_revisiones', 'unique(code)', 'El código debe ser único'),
      ]
 
+     # El siguiente campo no puede ser de solo lectura, ya que si no el cron no puede
+     # modificar su valor
+     pendiente_notificar = fields.Boolean(string="Pendiente de notificar", default=False)
 
-    # Definimos un campo calculado para controlar si la fecha de revisión esta dentro de la semana siguiente.
+     # Definimos un campo calculado para controlar si la fecha de revisión esta dentro de la semana siguiente.
      dentro_de_una_semana = fields.Boolean(compute='_compute_dentro_de_una_semana', string="Dentro de una semana", store=True)
+
+
 
      @api.depends('fecha_revision')
      def _compute_dentro_de_una_semana(self):
@@ -52,8 +52,15 @@ class revisiones(models.Model):
                 fecha_revision = fields.Date.from_string(record.fecha_revision)
                 una_semana_despues = today + timedelta(days=7)
                 record.dentro_de_una_semana = today <= fecha_revision <= una_semana_despues
+                # Si la revisión es dentro de una semana, quedará pendiente de notificar. 
+                # Se avisará todos los días de la última semana a través del cron.
+                if record.dentro_de_una_semana:
+                    record.pendiente_notificar = True
+                else:
+                    record.pendiente_notificar = False
             else:
                 record.dentro_de_una_semana = False
+
 
 
     # Cuando se elige un cliente, solamente se mostrarán los emplazamientos
@@ -67,75 +74,32 @@ class revisiones(models.Model):
         else:
             return {'domain': {'emplazamiento_id': []}}
         
-    # Cuando se elige un emplazamiento, se mostrará el responsable de la empresa del cliente
+     def realizar_avisos_revisiones(self):
+     # Este método envía un email al responsable avisando de que las próximas revisiones
+        peticiones = self.env['mantenprev.orden_facturacion'].search([('pendiente_notificar', '=', True)])
+        for peticion in peticiones:
+            email_to = peticion.email_responsable
+            # Se avisa si la revisión es dentro de una semana.
+            if peticion.dentro_de_una_semana: 
+                if email_to:
+                    # Construye el cuerpo del correo electrónico dependiendo del estado en el que se encuentra
+                    body_html = f'Se va a realizar una revisión de mantenimiento el próximo día {peticion.fecha_revision}.'
+                    body_html += f'\nEn el emplazamiento: {peticion.emplazamiento_id}'
+                    if peticion.estado == 'Problemas de pago':
+                        body_html += f'\nEl estado del emplazamiento se encuentra con: {peticion.estado}, por favor póngase en contacto con nosotros'
+                    try:
+                        mail = self.env['mail.mail'].create({
+                            'email_from': 'isamarrom@alu.edu.gva.es',
+                            'email_to': email_to,
+                            'subject': 'Aviso próxima revisión',
+                            'body_html': body_html
+                        })
+                        mail.send()
+                    except MailDeliveryException as e:
+                        raise UserError("Error al enviar el correo electrónico: %s" % str(e))
+                    except Exception as e:
+                        raise UserError("Se produjo un error inesperado al enviar el correo electrónico: %s" % str(e))
 
-     @api.onchange('emplazamiento_id')
-     def _onchange_emplazamiento_id(self):
-        if self.emplazamiento_id:
-            responsable_emplazamiento = self.emplazamiento_id.responsable_id
-            print("Entra en @api.onchange('emplazamiento_id')")
-            if responsable_emplazamiento:
-                self.responsable_id = responsable_emplazamiento.name
-                self.responsable_email = responsable_emplazamiento.email
-            else:
-                self.responsable_id = False
-                self.responsable_email = False
+            # Actualizar el campo pendiente_notificar a False
+            peticion.write({'pendiente_notificar': False})
 
-
-
-     @api.model
-     def create(self, values):
-     # Se ejecutará cuando se cree un nuevo registro en el modelo
-        # Llama a la creación de registro del modelo base
-        new_record = super(revisiones, self).create(values)
-
-        # Obtén el valor del campo responsable_email
-        responsable_email = new_record.responsable_email
-        f_revision = new_record.fecha_revision
-
-        # Construye el cuerpo del correo electrónico
-        body_html = 'Se va a realizar una revisión de mantenimiento el próximo día {f_revision}.'
-        if new_record.estado == 'Problemas de pago':
-            body_html += f'\nEl estado del emplazamiento se encuentra con: {new_record.estado}, por favor póngase en contacto con nosotros'
-
-        # Envía el correo electrónico
-        if responsable_email:
-            try:
-                self.env['mail.mail'].create({
-                    'subject': f'Próxima revisión en {new_record.emplazamiento.id}',
-                    'body_html': body_html,
-                    'email_to': responsable_email,
-                }).send()
-            except MailDeliveryException as e:
-                raise ValidationError(f"No se pudo enviar el correo electrónico {responsable_email}: {e}")
-
-        return new_record
-
-     def write(self, values):
-     # Se ejecutará cuando se actualice un registro del modelo
-        # Llama a la escritura del registro 
-        result = super(revisiones, self).write(values)
-
-        # Obtén el valor del campo responsable_email
-        responsable_email = self.responsable_email
-        f_revision = self.fecha_revision
-
-        print("Entra en el método de modificación")
-
-        # Construye el cuerpo del correo electrónico
-        body_html = 'Se va a realizar una revisión de mantenimiento el próximo día {f_revision}.'
-        if 'estado' in values and values['estado'] == 'Problemas de pago':
-            body_html += f'\nEl estado del emplazamiento se encuentra con: {self.estado}, por favor póngase en contacto con nosotros'
-
-        # Envía el correo electrónico
-        if responsable_email:
-            try:
-                self.env['mail.mail'].create({
-                    'subject': f'Próxima revisión en {self.emplazamiento.id}',
-                    'body_html': body_html,
-                    'email_to': responsable_email,
-                }).send()
-            except MailDeliveryException as e:
-                raise ValidationError(f"No se pudo enviar el correo electrónico a {responsable_email}: {e}")
-
-        return result

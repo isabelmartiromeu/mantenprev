@@ -1,5 +1,6 @@
 <odoo>
   <data>
+  <!-- REGLAS DE REGISTROS -->
      <!-- Información sobre la OCA -->
     <!-- Los empleados normales pueden ser los técnicos que trabajan sin responsabilidad --> 
     <record id="mantenprev.oca_validation_access_empleado" model="ir.model.access">
@@ -461,6 +462,7 @@
       <field name="perm_write">0</field>
       <field name="perm_unlink">0</field>
     </record>
+
 
   </data>
 </odoo>

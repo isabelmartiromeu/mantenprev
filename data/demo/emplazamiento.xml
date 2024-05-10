@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+    <!-- Emplazamiento -->
+    <record model="mantenprev.emplazamiento" id="mantenprev.emplazamiento_1">
+      <field name="cliente_id" ref="mantenprev.cliente_1"/>
+      <field name="name">Centro Comercial Arena - planta 1</field>
+      <field name="ciudad">Valencia</field>
+      <field name="localizacion">Cuadro eléctrico planta 1</field>
+
+    </record>
+
+    <record model="mantenprev.emplazamiento" id="mantenprev.emplazamiento_2">
+      <field name="cliente_id" ref="mantenprev.cliente_2"/>
+      <field name="name">Centro Comercial El Saler - planta baja</field>
+      <field name="ciudad">Valencia</field>
+      <field name="localizacion">Cuadro eléctrico planta baja</field>
+
+    </record>
+
+    <record model="mantenprev.emplazamiento" id="mantenprev.emplazamiento_3">
+      <field name="cliente_id" ref="mantenprev.cliente_3"/>
+      <field name="name">Centro Comercial Gran Vía - planta baja</field>
+      <field name="ciudad">Alicante</field>
+      <field name="localizacion">Cuadro eléctrico planta baja</field>
+
+    </record>
+  </data>
+</odoo>
